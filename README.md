@@ -1,4 +1,4 @@
-<!-- COVERALLS BADGE -->
+[![Coverage Status](https://coveralls.io/repos/github/brianbixby/chow-backend/badge.svg?branch=master)](https://coveralls.io/github/brianbixby/chow-backend?branch=master)
 
 ## Project: Chow (A recipe App)
 
