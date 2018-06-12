@@ -40,3 +40,25 @@ profileRouter.put('/api/profile/:profileID', bearerAuth, json(), (req, res, next
     })
     .catch(next);
 });
+
+// add favorite
+profileRouter.put('/api/favorites', bearerAuth, json(), (req, res, next) => {
+  debug('PUT: /api/favorites');
+
+  const { image, label, uri } = req.body;
+  const message = !image ? 'expected a image'
+    : !label ? 'expected a label'
+      : !uri ? 'expected a uri'
+        : null;
+  
+  if (message)
+    return next(createError(400, `BAD REQUEST ERROR: ${message}`));
+
+  Profile.findOneAndUpdate({ userID: req.user._id }, { $push: { favorites: req.body }})
+    .then(myProfile => {
+      if(!myProfile)
+        return next(createError(404, 'NOT FOUND ERROR: profile not found'));
+      res.json(req.body);
+    })
+    .catch(next);
+});
