@@ -11,7 +11,7 @@ const profileSchema = mongoose.Schema({
   image: String,
   createdOn: { type: Date, default: Date.now },
   lastLogin: { type: Date, default: Date.now },
-  favorites: [{type: mongoose.Schema.Types.ObjectId, ref: 'league'}],
+  favorites: [{ type: String, unique: true }],
   tags: [ String ],
 });
 

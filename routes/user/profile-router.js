@@ -54,7 +54,7 @@ profileRouter.put('/api/favorites', bearerAuth, json(), (req, res, next) => {
   if (message)
     return next(createError(400, `BAD REQUEST ERROR: ${message}`));
 
-  Profile.findOneAndUpdate({ userID: req.user._id }, { $push: { favorites: req.body }})
+  Profile.findOneAndUpdate({ userID: req.user._id }, { $push: { favorites: JSON.stringify(req.body) }})
     .then(myProfile => {
       if(!myProfile)
         return next(createError(404, 'NOT FOUND ERROR: profile not found'));
