@@ -62,3 +62,22 @@ profileRouter.put('/api/favorites', bearerAuth, json(), (req, res, next) => {
     })
     .catch(next);
 });
+
+// remove favorite
+profileRouter.put('/api/favorites/remove', bearerAuth, json(), (req, res, next) => {
+  debug('PUT: /api/favorites/remove');
+
+  const { label } = req.body;
+  const message = !label ? 'expected a label' : null;
+  
+  if (message)
+    return next(createError(400, `BAD REQUEST ERROR: ${message}`));
+
+  Profile.findOneAndUpdate({ userID: req.user._id }, { $pull: { favorites: JSON.stringify(req.body) }})
+    .then(myProfile => {
+      if(!myProfile)
+        return next(createError(404, 'NOT FOUND ERROR: profile not found'));
+      res.json(req.body);
+    })
+    .catch(next);
+});

@@ -8,11 +8,9 @@ const createError = require('http-errors');
 const profileSchema = mongoose.Schema({
   userID: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'user' },
   username: {type: String, required: true },
-  image: String,
   createdOn: { type: Date, default: Date.now },
   lastLogin: { type: Date, default: Date.now },
   favorites: [{ type: String, unique: true }],
-  tags: [ String ],
 });
 
 const Profile = module.exports = mongoose.model('profile', profileSchema);
