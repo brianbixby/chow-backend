@@ -16,8 +16,11 @@ exports.create = function() {
   };
 
   mock.requestProfile = {
-    image: faker.random.image(),
-    tags: faker.random.word(),
+//     image: faker.random.image(),
+//     country: faker.address.country(),
+//     state: faker.address.state(),
+//     birthdate: 10101909,
+//     tags: faker.random.word(),
   };
 
   let user = new User(mock.requestUser);
@@ -46,3 +49,4 @@ exports.remove = function() {
     Profile.remove({}),
   ]);
 };
+

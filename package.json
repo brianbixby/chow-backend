@@ -1,55 +1,57 @@
 {
   "name": "chow",
   "version": "1.0.0",
-  "description": "The backend for a MERN stack recipe site",
+  "description": "The backend for a MERN stack Recipe App.",
   "main": "server.js",
   "directories": {
     "lib": "lib"
   },
+  "engines": {
+    "node": ">=10.0.0 <11.0.0"
+  },
   "dependencies": {
-    "bcrypt": "^2.0.1",
+    "ajv": "^5.5.2",
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.1",
     "cors": "^2.8.4",
-    "coveralls": "^3.0.1",
     "debug": "^3.1.0",
     "del": "^3.0.0",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "http-errors": "^1.6.3",
-    "istanbul": "^0.4.5",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.1.4",
-    "morgan": "^1.9.0"
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "http-errors": "^1.6.2",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.9",
+    "morgan": "^1.9.0",
+    "nyc": "^14.1.1"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "^5.16.0",
     "faker": "^4.1.0",
-    "jest": "^23.1.0",
-    "superagent": "^3.8.3"
+    "jest": "^24.8.0",
+    "superagent": "^3.8.2"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "scripts": {
-    "test": "DEBUG='chow*' jest -i --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "DEBUG='chow*' jest -i --coverage",
     "start": "DEBUG='chow*' node server.js",
-    "lint": "eslint ."
+    "lint": "eslint */*/*.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brianbixby/chow-backend.git"
   },
   "keywords": [
-    "chow",
-    "recipe site",
+    "Chow",
+    "Recipe",
     "MERN",
-    "Brian Bixby",
-    "Built By Bixby"
+    "Brian Bixby"
   ],
   "author": "Brian Bixby",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brianbixby/chow-backend/issues"
+    "url": "https://github.com/brianbixby/chow-backend#issues"
   },
   "homepage": "https://github.com/brianbixby/chow-backend#readme"
 }

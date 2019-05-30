@@ -38,11 +38,6 @@ describe('Profile routes', function() {
             if (err) return done(err);
             expect(res.status).toEqual(200);
             expect(typeof res.text).toEqual('string');
-            expect(res.body.status).toEqual(this.mock.profile.status);
-            expect(res.body.tags.toString()).toEqual(this.mock.profile.tags.toString());
-            expect(res.body.image).toEqual(this.mock.profile.image);
-            expect(res.body.country).toEqual(this.mock.profile.country);
-            expect(res.body.state).toEqual(this.mock.profile.state);
             expect(res.body._id.toString()).toEqual(this.mock.profile._id.toString());
             expect(res.body.userID.toString()).toEqual(this.mock.profile.userID.toString());
             expect(res.body.username).toEqual(this.mock.profile.username);
