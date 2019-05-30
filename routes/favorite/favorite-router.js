@@ -66,6 +66,6 @@ favoriteRouter.put('/api/favorite/:favoriteID/remove', bearerAuth, json(), (req,
   debug('PUT: /api/favorite/:favoriteID/remove');
 
   Profile.findOneAndUpdate({ userID: req.user._id }, { $pull: { favorites: req.params.favoriteID}}, { new: true })
-    .then(profile => res.json(profile.favorites))
+    .then(() => res.json(req.params.favoriteID))
     .catch(next);
 });
