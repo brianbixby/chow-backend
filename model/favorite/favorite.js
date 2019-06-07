@@ -11,6 +11,7 @@ const favoriteSchema = mongoose.Schema({
   uri: { type: String, required: true },
   source: { type: String, required: true },
   ingredientLines: [{ type: String, required: true }],
+  healthLabels: [{type: String}],
 });
 
 module.exports = mongoose.model('favorite', favoriteSchema);

@@ -17,7 +17,7 @@ favoriteRouter.post('/api/favorite', bearerAuth, json(), (req, res, next) => {
 
   console.log("req.body: ", req.body);
 
-  const { image, label, calories, url, uri, source, ingredientLines  } = req.body;
+  const { image, label, calories, url, uri, source, ingredientLines, healthLabels  } = req.body;
   let yie = req.body.yield;
   const message = !image ? 'expected a favorite image'
     : !label ? 'expected a favorite label'
@@ -34,7 +34,7 @@ favoriteRouter.post('/api/favorite', bearerAuth, json(), (req, res, next) => {
   Favorite.findOne({ image: image, label: label, calories: calories, yield: yie, url: url, uri: uri, source: source, ingredientLines: ingredientLines })
     .then(favorite => {
       if(!favorite) {
-        return new Favorite({ image: image, label: label, calories: calories, yield: yie, url: url, uri: uri, source: source, ingredientLines: ingredientLines }).save()
+        return new Favorite({ image: image, label: label, calories: calories, yield: yie, url: url, uri: uri, source: source, ingredientLines: ingredientLines, healthLabels: healthLabels }).save()
           .catch(next);
       }
       return favorite;
