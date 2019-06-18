@@ -15,13 +15,7 @@ exports.create = function() {
     password: faker.internet.password(),
   };
 
-  mock.requestProfile = {
-//     image: faker.random.image(),
-//     country: faker.address.country(),
-//     state: faker.address.state(),
-//     birthdate: 10101909,
-//     tags: faker.random.word(),
-  };
+  mock.requestProfile = {};
 
   let user = new User(mock.requestUser);
   return user.generatePasswordHash(mock.requestUser.password)
@@ -40,7 +34,7 @@ exports.create = function() {
       mock.token = token;
       return mock;    
     })
-    .catch(console.log);
+    .catch(err => console.log(err));
 };    
       
 exports.remove = function() {

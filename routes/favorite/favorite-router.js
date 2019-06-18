@@ -15,8 +15,6 @@ const favoriteRouter = module.exports = Router();
 favoriteRouter.post('/api/favorite', bearerAuth, json(), (req, res, next) => {
   debug(`POST: /api/favorite`);
 
-  console.log('req.body: ', req.body);
-
   const { image, label, calories, url, uri, source, ingredientLines, healthLabels, dietLabels, digest  } = req.body;
   let yie = req.body.yield;
   const message = !image ? 'expected a favorite image'
