@@ -25,7 +25,7 @@ exports.create = () => {
       mock.token = token;
       return mock;    
     })
-    .catch(console.log);
+    .catch(err => console.log(err));
 };    
  
       

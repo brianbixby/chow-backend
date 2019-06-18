@@ -35,7 +35,7 @@ authRouter.post('/api/signup', json(), (req, res, next) => {
     })
     .then(() => user.generateToken())
     .then(token => {
-      res.cookie('Bracket-Busters-Token', token, {maxAge: 604800000});
+      res.cookie('chowToken', token, {maxAge: 604800000});
       res.send(token);
     })
     .catch(next);
@@ -61,7 +61,7 @@ authRouter.get('/api/signin', basicAuth, (req, res, next) => {
           return profile.save();
         })
         .then(() => {
-          res.cookie('Bracket-Busters-Token', token, {maxAge: 604800000});
+          res.cookie('chowToken', token, {maxAge: 604800000});
           res.send(token);
         })
         .catch(next);
@@ -87,7 +87,7 @@ authRouter.get('/api/signin/token', bearerAuth, (req, res, next) => {
           return profile.save();
         })
         .then(() => {
-          res.cookie('Bracket-Busters-Token', token, {maxAge: 604800000});
+          res.cookie('chowToken', token, {maxAge: 604800000});
           res.send(token);
         })
         .catch(next);
