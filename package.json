@@ -4,7 +4,7 @@
   "description": "The backend for a MERN stack Recipe App.",
   "engines": {
     "node": "12.5.0",
-    "yarn": "1.17.0",
+    "yarn": "1.17.3",
     "npm": "6.9.0"
   },
   "main": "server.js",
@@ -14,6 +14,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.5",
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "coveralls": "^3.0.4",
     "debug": "^4.1.1",
