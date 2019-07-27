@@ -38,7 +38,7 @@
   },
   "scripts": {
     "test": "DEBUG='chow*' jest -i --coverage",
-    "start": "DEBUG='chow*' node server.js",
+    "start": "NODE_ENV=production node server.js",
     "lint": "eslint */*/*.js"
   },
   "repository": {
