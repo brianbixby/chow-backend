@@ -21,7 +21,6 @@ Information about the frontend of Chow can be found here: [Chow Frontend](https:
     - Bluebird
     - Cors
     - Coveralls
-    - Debug 
     - Del 
     - Dotenv 
     - Express  

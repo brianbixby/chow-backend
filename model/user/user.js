@@ -1,14 +1,12 @@
 'use strict';
 
-const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
 const createError = require('http-errors');
-const debug = require('debug')('chow:user');
+const crypto = require('node:crypto');
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: {type: String, required: true },
@@ -16,13 +14,10 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.methods.generatePasswordHash = function(password) {
-  debug('generate password hash');
-
   return new Promise((resolve, reject) => {
-    bcrypt.hash(password, 10, (err, hash) => {
-      if(err)
+    bcrypt.hash(password, 5, (err, hash) => {
+      if (err)
         return reject(err);
-
       this.password = hash;
       resolve(this);
     });
@@ -30,24 +25,18 @@ userSchema.methods.generatePasswordHash = function(password) {
 };
 
 userSchema.methods.comparePasswordHash = function(password) {
-  debug('comparePasswordHash');
-
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, this.password, (err, valid) => {
-      if(err)
-        return reject(err);
-
-      if(!valid)
-        return reject(createError(401, 'invalid password'));
-        
-      resolve(this);
+        if (err)
+            return reject(err);
+        if(!valid)
+            return reject(createError(401, 'invalid password'));
+        resolve(this);
     });
   });
 };
 
 userSchema.methods.generateFindHash = function() {
-  debug('generateFindHash');
-
   return new Promise((resolve, reject) => {
     let tries = 0;
 
@@ -67,8 +56,6 @@ userSchema.methods.generateFindHash = function() {
 };
 
 userSchema.methods.generateToken = function() {
-  debug('generateToken');
-
   return new Promise((resolve, reject) => {
     this.generateFindHash()
       .then(findHash => resolve(jwt.sign({ token: findHash}, process.env.APP_SECRET)))

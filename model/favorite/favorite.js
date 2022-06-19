@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const favoriteSchema = mongoose.Schema({
+const favoriteSchema = new mongoose.Schema({
   calories: { type: String, required: true },
   dietLabels: [{type: String}],
   digest: [{type: mongoose.Schema.Types.Mixed}],
