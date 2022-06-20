@@ -1,6 +1,6 @@
 'use strict';
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const createError = require('http-errors');
